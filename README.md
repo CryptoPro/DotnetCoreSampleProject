@@ -1,23 +1,23 @@
-# DotnetCoreSampleProject
-Пример проекта Dotnet Core с реализацией ГОСТ криптографии.
+п»ї# DotnetCoreSampleProject
+РџСЂРёРјРµСЂ РїСЂРѕРµРєС‚Р° Dotnet Core СЃ СЂРµР°Р»РёР·Р°С†РёРµР№ Р“РћРЎРў РєСЂРёРїС‚РѕРіСЂР°С„РёРё.
 
-## Сборка проекта без сборки corefx для Windows
+## РЎР±РѕСЂРєР° РїСЂРѕРµРєС‚Р° Р±РµР· СЃР±РѕСЂРєРё corefx РґР»СЏ Windows
 
-Для сборки проекта необходимо выполнить следующие действия:
+Р”Р»СЏ СЃР±РѕСЂРєРё РїСЂРѕРµРєС‚Р° РЅРµРѕР±С…РѕРґРёРјРѕ РІС‹РїРѕР»РЅРёС‚СЊ СЃР»РµРґСѓСЋС‰РёРµ РґРµР№СЃС‚РІРёСЏ:
 
-1. Установить КриптоПро CSP 5.0. Убедиться что введена действующая лицензия.
+1. РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РљСЂРёРїС‚РѕРџСЂРѕ CSP 5.0. РЈР±РµРґРёС‚СЊСЃСЏ С‡С‚Рѕ РІРІРµРґРµРЅР° РґРµР№СЃС‚РІСѓСЋС‰Р°СЏ Р»РёС†РµРЅР·РёСЏ.
 
-2. Установить последнюю версию [core 3.1 sdk и runtime](https://dotnet.microsoft.com/download) .
+2. РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РїРѕСЃР»РµРґРЅСЋСЋ РІРµСЂСЃРёСЋ [core 3.1 sdk Рё runtime](https://dotnet.microsoft.com/download) .
 
-3. Задать переменную среды DOTNET_MULTILEVEL_LOOKUP=0.
+3. Р—Р°РґР°С‚СЊ РїРµСЂРµРјРµРЅРЅСѓСЋ СЃСЂРµРґС‹ DOTNET_MULTILEVEL_LOOKUP=0.
 
-4. Скачать архив [packages](https://ci.appveyor.com/project/CryptoProLLC/corefx/build/artifacts) и разархивировать его в папку packages по некоторому пути `packages_PATH`.
+4. РЎРєР°С‡Р°С‚СЊ Р°СЂС…РёРІ [packages](https://ci.appveyor.com/project/CryptoProLLC/corefx/build/artifacts) Рё СЂР°Р·Р°СЂС…РёРІРёСЂРѕРІР°С‚СЊ РµРіРѕ РІ РїР°РїРєСѓ packages РїРѕ РЅРµРєРѕС‚РѕСЂРѕРјСѓ РїСѓС‚Рё `packages_PATH`.
 
-5. Скачать архив [runtime](https://ci.appveyor.com/project/CryptoProLLC/corefx/build/artifacts) и и разархивировать его в папку runtime по некоторому пути `runtime_PATH`.
+5. РЎРєР°С‡Р°С‚СЊ Р°СЂС…РёРІ [runtime](https://ci.appveyor.com/project/CryptoProLLC/corefx/build/artifacts) Рё Рё СЂР°Р·Р°СЂС…РёРІРёСЂРѕРІР°С‚СЊ РµРіРѕ РІ РїР°РїРєСѓ runtime РїРѕ РЅРµРєРѕС‚РѕСЂРѕРјСѓ РїСѓС‚Рё `runtime_PATH`.
 
-6. Изменить файл %appdata%\NuGet\NuGet.Config, добавив в начало узла `packageSources` источник `<add key="local coreclr" value="packages_PATH\Debug\NonShipping" />`.
+6. РР·РјРµРЅРёС‚СЊ С„Р°Р№Р» %appdata%\NuGet\NuGet.Config, РґРѕР±Р°РІРёРІ РІ РЅР°С‡Р°Р»Рѕ СѓР·Р»Р° `packageSources` РёСЃС‚РѕС‡РЅРёРє `<add key="local coreclr" value="packages_PATH\Debug\NonShipping" />`.
 
-Пример:
+РџСЂРёРјРµСЂ:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -29,24 +29,24 @@
 </configuration>
 ```
 
-7. Скопировать сборки NetStandard в локальную директорию nuget (`$env:userprofile\.nuget\packages\`) с заменой.
+7. РЎРєРѕРїРёСЂРѕРІР°С‚СЊ СЃР±РѕСЂРєРё NetStandard РІ Р»РѕРєР°Р»СЊРЅСѓСЋ РґРёСЂРµРєС‚РѕСЂРёСЋ nuget (`$env:userprofile\.nuget\packages\`) СЃ Р·Р°РјРµРЅРѕР№.
 
-Пример powershell скрипта, выполняющего данную операцию
+РџСЂРёРјРµСЂ powershell СЃРєСЂРёРїС‚Р°, РІС‹РїРѕР»РЅСЏСЋС‰РµРіРѕ РґР°РЅРЅСѓСЋ РѕРїРµСЂР°С†РёСЋ
 ```powershell
 git clone https://github.com/CryptoProLLC/NetStandard.Library
 New-Item -ItemType Directory -Force -Path "$env:userprofile\.nuget\packages\netstandard.library"
 Copy-Item -Force -Recurse ".\NetStandard.Library\nugetReady\netstandard.library" -Destination "$env:userprofile\.nuget\packages\"
 ```
 
-8. Выкачать локально репозиторий текущего проекта.
+8. Р’С‹РєР°С‡Р°С‚СЊ Р»РѕРєР°Р»СЊРЅРѕ СЂРµРїРѕР·РёС‚РѕСЂРёР№ С‚РµРєСѓС‰РµРіРѕ РїСЂРѕРµРєС‚Р°.
 ```powershell
 git clone https://github.com/CryptoProLLC/DotnetCoreSampleProject
 ```
 
-9. Изменить файл DotnetSampleProject.csproj, указав правильные пути до сборок `System.Security.Cryptography.Pkcs.dll` и `System.Security.Cryptography.Xml.dll`, указав в качестве пути
+9. РР·РјРµРЅРёС‚СЊ С„Р°Р№Р» DotnetSampleProject.csproj, СѓРєР°Р·Р°РІ РїСЂР°РІРёР»СЊРЅС‹Рµ РїСѓС‚Рё РґРѕ СЃР±РѕСЂРѕРє `System.Security.Cryptography.Pkcs.dll` Рё `System.Security.Cryptography.Xml.dll`, СѓРєР°Р·Р°РІ РІ РєР°С‡РµСЃС‚РІРµ РїСѓС‚Рё
 `packages_PATH`.
 
-Пример:
+РџСЂРёРјРµСЂ:
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
@@ -70,7 +70,7 @@ git clone https://github.com/CryptoProLLC/DotnetCoreSampleProject
 </Project>
 ```
 
-10. Перейти в папку проекта. Восстановить зависимости и собрать проект. Запустить полученный проект.
+10. РџРµСЂРµР№С‚Рё РІ РїР°РїРєСѓ РїСЂРѕРµРєС‚Р°. Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё Рё СЃРѕР±СЂР°С‚СЊ РїСЂРѕРµРєС‚. Р—Р°РїСѓСЃС‚РёС‚СЊ РїРѕР»СѓС‡РµРЅРЅС‹Р№ РїСЂРѕРµРєС‚.
 ```powershell
 cd DotnetCoreSampleProject
 dotnet restore
@@ -78,25 +78,25 @@ dotnet build
 dotnet run
 ```
 
-## Сборка проекта со сборкой corefx для Windows
+## РЎР±РѕСЂРєР° РїСЂРѕРµРєС‚Р° СЃРѕ СЃР±РѕСЂРєРѕР№ corefx РґР»СЏ Windows
 
-1. Выполнить шаги 1-3 из "Сборка проекта без сборки corefx".
+1. Р’С‹РїРѕР»РЅРёС‚СЊ С€Р°РіРё 1-3 РёР· "РЎР±РѕСЂРєР° РїСЂРѕРµРєС‚Р° Р±РµР· СЃР±РѕСЂРєРё corefx".
 
-2. Выкачать репозиторий [corefx](https://github.com/CryptoProLLC/corefx/).
+2. Р’С‹РєР°С‡Р°С‚СЊ СЂРµРїРѕР·РёС‚РѕСЂРёР№ [corefx](https://github.com/CryptoProLLC/corefx/).
 
-3. Выполнить сборку corefx, перейдя в локальную папку репозитория и выполнив `build.cmd`.
+3. Р’С‹РїРѕР»РЅРёС‚СЊ СЃР±РѕСЂРєСѓ corefx, РїРµСЂРµР№РґСЏ РІ Р»РѕРєР°Р»СЊРЅСѓСЋ РїР°РїРєСѓ СЂРµРїРѕР·РёС‚РѕСЂРёСЏ Рё РІС‹РїРѕР»РЅРёРІ `build.cmd`.
 
-4. Выполнить шаг 6 из "Сборка проекта без сборки corefx", использовав в качестве пути 
-`packages_PATH` путь вида `corefx_PATH\artifacts\packages`, где `corefx_PATH` путь до локальной папки репозитория corefx.
+4. Р’С‹РїРѕР»РЅРёС‚СЊ С€Р°Рі 6 РёР· "РЎР±РѕСЂРєР° РїСЂРѕРµРєС‚Р° Р±РµР· СЃР±РѕСЂРєРё corefx", РёСЃРїРѕР»СЊР·РѕРІР°РІ РІ РєР°С‡РµСЃС‚РІРµ РїСѓС‚Рё 
+`packages_PATH` РїСѓС‚СЊ РІРёРґР° `corefx_PATH\artifacts\packages`, РіРґРµ `corefx_PATH` РїСѓС‚СЊ РґРѕ Р»РѕРєР°Р»СЊРЅРѕР№ РїР°РїРєРё СЂРµРїРѕР·РёС‚РѕСЂРёСЏ corefx.
 
-5. Выполнить шаги 7-10 из "Сборка проекта без сборки corefx", использовав в качестве пути 
-`packages_PATH` путь вида `corefx_PATH\artifacts\packages`, где `corefx_PATH` путь до локальной папки репозитория corefx.
+5. Р’С‹РїРѕР»РЅРёС‚СЊ С€Р°РіРё 7-10 РёР· "РЎР±РѕСЂРєР° РїСЂРѕРµРєС‚Р° Р±РµР· СЃР±РѕСЂРєРё corefx", РёСЃРїРѕР»СЊР·РѕРІР°РІ РІ РєР°С‡РµСЃС‚РІРµ РїСѓС‚Рё 
+`packages_PATH` РїСѓС‚СЊ РІРёРґР° `corefx_PATH\artifacts\packages`, РіРґРµ `corefx_PATH` РїСѓС‚СЊ РґРѕ Р»РѕРєР°Р»СЊРЅРѕР№ РїР°РїРєРё СЂРµРїРѕР·РёС‚РѕСЂРёСЏ corefx.
 
-В случае внесения изменений в репозиторий corefx, перед его сборкой необходимо очистить папки 
+Р’ СЃР»СѓС‡Р°Рµ РІРЅРµСЃРµРЅРёСЏ РёР·РјРµРЅРµРЅРёР№ РІ СЂРµРїРѕР·РёС‚РѕСЂРёР№ corefx, РїРµСЂРµРґ РµРіРѕ СЃР±РѕСЂРєРѕР№ РЅРµРѕР±С…РѕРґРёРјРѕ РѕС‡РёСЃС‚РёС‚СЊ РїР°РїРєРё 
 `%userprofile%\.nuget\packages\microsoft.private.corefx.netcoreapp`, `%userprofile%\.nuget\packages\runtime.win-x64.microsoft.private.corefx.netcoreapp`, `corefx_PATH\artifacts\packages`
-после чего завершить все процессы dotnet core. 
+РїРѕСЃР»Рµ С‡РµРіРѕ Р·Р°РІРµСЂС€РёС‚СЊ РІСЃРµ РїСЂРѕС†РµСЃСЃС‹ dotnet core. 
 
-Пример скрипта выполняющего данное действие 
+РџСЂРёРјРµСЂ СЃРєСЂРёРїС‚Р° РІС‹РїРѕР»РЅСЏСЋС‰РµРіРѕ РґР°РЅРЅРѕРµ РґРµР№СЃС‚РІРёРµ 
 ```powershell
 taskkill /im dotnet.exe /f
 rmdir /S /Q %userprofile%\.nuget\packages\microsoft.private.corefx.netcoreapp
@@ -106,7 +106,7 @@ build
 ```
 
 
-Дополнительную информацию можно получить тут:
+Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ РјРѕР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ С‚СѓС‚:
 
 - https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/dogfooding.md
 

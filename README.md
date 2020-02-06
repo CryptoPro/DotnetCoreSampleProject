@@ -15,7 +15,7 @@
 
 5. Скачать архив [runtime](https://ci.appveyor.com/project/CryptoProLLC/corefx/build/artifacts) и и разархивировать его в папку runtime по некоторому пути `runtime_PATH`.
 
-6. Изменить файл %appdata%\NuGet\NuGet.Config, добавив в начало узла `packageSources` источник `<add key="local coreclr" value="packages_PATH\Debug\NonShipping" />`.
+6. Изменить файл `%appdata%\NuGet\NuGet.Config`, добавив в начало узла `packageSources` источник `<add key="local coreclr" value="packages_PATH\Debug\NonShipping" />`.
 
 Пример:
 
@@ -29,7 +29,7 @@
 </configuration>
 ```
 
-7. Скопировать сборки NetStandard в локальную директорию nuget (`$env:userprofile\.nuget\packages\`) с заменой.
+7. Скопировать сборки NetStandard из репозитория [NetStandard.Library](https://github.com/CryptoProLLC/NetStandard.Library/tree/master/nugetReady/netstandard.library) в локальную директорию nuget (`$env:userprofile\.nuget\packages\`) с заменой.
 
 Пример powershell скрипта, выполняющего данную операцию
 ```powershell

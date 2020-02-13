@@ -8,11 +8,11 @@
 
 3. Задать переменную среды DOTNET_MULTILEVEL_LOOKUP=0.
 
-4. Скачать архив [packages](https://ci.appveyor.com/project/CryptoProLLC/corefx/build/artifacts) и разархивировать его в папку packages по некоторому пути `packages_PATH`.
+4. Скачать архив [package_linux_debug.zip](https://ci.appveyor.com/project/CryptoProLLC/corefx/build/artifacts) и разархивировать его в папку packages по некоторому пути `packages_PATH`.
 
-5. Скачать архив [runtime](https://ci.appveyor.com/project/CryptoProLLC/corefx/build/artifacts) и и разархивировать его в папку runtime по некоторому пути `runtime_PATH`.
+5. Скачать архив [runtime-debug-linux.zip](https://ci.appveyor.com/project/CryptoProLLC/corefx/build/artifacts) и и разархивировать его в папку runtime по некоторому пути `runtime_PATH`.
 
-6. Изменить файл `~/.nuget/NuGet/NuGet.Config`, добавив в начало узла `packageSources` источник `<add key="local coreclr" value="packages_PATH/Debug/NonShipping" />`.
+6. Изменить файл `~/.nuget/NuGet/NuGet.Config`, добавив в начало узла `packageSources` источник `<add key="local coreclr" value="packages_PATH" />`.
 
 Пример:
 
@@ -20,7 +20,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <packageSources>
-    <add key="local coreclr" value="../../git/packages/Debug/NonShipping" />
+    <add key="local coreclr" value="../../git/packages" />
     <add key="nuget.org" value="https://api.nuget.org/v3/index.json" protocolVersion="3" />
   </packageSources>
 </configuration>
@@ -74,3 +74,26 @@ dotnet restore
 dotnet build
 dotnet run
 ```
+
+## Сборка проекта со сборкой corefx для Linux
+
+1. Выполнить шаги 1-3 из "Сборка проекта без сборки corefx".
+
+2. Выкачать репозиторий [corefx](https://github.com/CryptoProLLC/corefx/).
+
+3. Выполнить сборку corefx, перейдя в локальную папку репозитория и выполнив `build.sh`.
+
+4. Выполнить шаги 6-10 из "Сборка проекта без сборки corefx", использовав в качестве пути 
+`packages_PATH` путь вида `corefx_PATH/artifacts/packages/Debug/NonShipping`, в качестве пути `runtime_PATH` путь вида `corefx_PATH/artifacts/bin/runtime/netcoreapp-Linux-Debug-x64`, где `corefx_PATH` путь до локальной папки репозитория corefx.
+
+В случае внесения изменений в репозиторий corefx, перед его сборкой необходимо очистить папки 
+`~/.nuget/packages/microsoft.private.corefx.netcoreapp`, `~/.nuget/packages/runtime.Linux-x64.microsoft.private.corefx.netcoreapp`, `corefx_PATH/artifacts/packages`
+после чего завершить все процессы dotnet core. 
+
+Дополнительную информацию можно получить тут:
+
+- https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/dogfooding.md
+
+- https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/developer-guide.md
+
+- https://github.com/dotnet/corefx/blob/master/Documentation/building/windows-instructions.md

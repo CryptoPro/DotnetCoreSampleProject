@@ -8,9 +8,9 @@
 
 3. Задать переменную среды DOTNET_MULTILEVEL_LOOKUP=0.
 
-4. Скачать архив [package_linux_debug.zip](https://ci.appveyor.com/project/CryptoProLLC/corefx/build/artifacts) и разархивировать его в папку packages по некоторому пути `packages_PATH`.
+4. Скачать архив [package_linux_debug.zip](https://github.com/CryptoProLLC/corefx/releases) и разархивировать его в папку packages по некоторому пути `packages_PATH`.
 
-5. Скачать архив [runtime-debug-linux.zip](https://ci.appveyor.com/project/CryptoProLLC/corefx/build/artifacts) и и разархивировать его в папку runtime по некоторому пути `runtime_PATH`.
+5. Скачать архив [runtime-debug-linux.zip](https://github.com/CryptoProLLC/corefx/releases) и и разархивировать его в папку runtime по некоторому пути `runtime_PATH`.
 
 6. Изменить файл `~/.nuget/NuGet/NuGet.Config`, добавив в начало узла `packageSources` источник `<add key="local coreclr" value="packages_PATH" />`.
 

@@ -4,8 +4,10 @@
 
 1. Установить КриптоПро CSP 5.0. Убедиться что введена действующая лицензия.
 
-2. Установить последнюю версию [core 3.1 sdk и runtime](https://dotnet.microsoft.com/download). 
-Рекомендуются версии 3.1.3 и 3.1.4. Установить [Распространяемый пакет Visual C++ для Visual Studio 2015](https://www.microsoft.com/ru-ru/download/details.aspx?id=48145).
+2. Установить [core 3.1 sdk и runtime](https://dotnet.microsoft.com/download/dotnet-core/3.1). 
+Рекомендуются версии runtime 3.1.3 и 3.1.4 и sdk 3.1.300.
+
+Установить [Распространяемый пакет Visual C++ для Visual Studio 2015](https://www.microsoft.com/ru-ru/download/details.aspx?id=48145).
 
 3. Задать переменную среды DOTNET_MULTILEVEL_LOOKUP=0.
 

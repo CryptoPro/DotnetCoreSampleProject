@@ -4,7 +4,8 @@
 
 1. Установить КриптоПро CSP 5.0. Убедиться что введена действующая лицензия.
 
-2. Установить последнюю версию [core 3.1 sdk и runtime](https://dotnet.microsoft.com/download) .
+2. Установить последнюю версию [core 3.1 sdk и runtime](https://dotnet.microsoft.com/download). 
+Рекомендуются версии 3.1.3 и 3.1.4. Установить [Распространяемый пакет Visual C++ для Visual Studio 2015](https://www.microsoft.com/ru-ru/download/details.aspx?id=48145).
 
 3. Задать переменную среды DOTNET_MULTILEVEL_LOOKUP=0.
 
@@ -40,7 +41,7 @@ Copy-Item -Force -Recurse ".\NetStandard.Library\nugetReady\netstandard.library"
 git clone https://github.com/CryptoProLLC/DotnetCoreSampleProject
 ```
 
-9. Изменить файл DotnetSampleProject.csproj, указав правильные пути до сборок `System.Security.Cryptography.Pkcs.dll` и `System.Security.Cryptography.Xml.dll`, указав в качестве пути
+9. Изменить файл `DotnetSampleProject.csproj`, указав правильные пути до сборок `System.Security.Cryptography.Pkcs.dll` и `System.Security.Cryptography.Xml.dll`, указав в качестве пути
 `runtime_PATH`.
 
 Пример:
@@ -49,12 +50,13 @@ git clone https://github.com/CryptoProLLC/DotnetCoreSampleProject
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RuntimeFrameworkVersion>3.1.3</RuntimeFrameworkVersion>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <!-- make self-contained -->
     <PackageConflictPreferredPackages>Microsoft.Private.CoreFx.NETCoreApp;runtime.win-x64.Microsoft.Private.CoreFx.NETCoreApp;runtime.linux-x64.Microsoft.Private.CoreFx.NETCoreApp;$(PackageConflictPreferredPackages)</PackageConflictPreferredPackages>
   </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.Private.CoreFx.NETCoreApp" Version="4.7.0-dev.20111.1" />
+        <PackageReference Include="Microsoft.Private.CoreFx.NETCoreApp" Version="4.7.0-dev.20163.1" />
     </ItemGroup>
     <ItemGroup>
       <Reference Include="System.Security.Cryptography.Pkcs">
@@ -74,6 +76,8 @@ dotnet restore
 dotnet build
 dotnet run
 ```
+
+В случае возникновения ошибки или предупреждения о несовпадения найденой и указанной весии `Microsoft.Private.CoreFx.NETCoreApp` изменить версию в файле `DotnetSampleProject.csproj`.
 
 ## Сборка проекта со сборкой corefx для Windows
 

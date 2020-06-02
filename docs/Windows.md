@@ -83,13 +83,13 @@ dotnet run
 
 ## Сборка проекта со сборкой corefx для Windows
 
-1. Выполнить шаги 1-3 из "Сборка проекта без сборки corefx".
+1. Выполнить шаги 1-3, 7 из "Сборка проекта без сборки corefx".
 
 2. Выкачать репозиторий [corefx](https://github.com/CryptoProLLC/corefx/).
 
 3. Выполнить сборку corefx, перейдя в локальную папку репозитория и выполнив `build.cmd`.
 
-4. Выполнить шаги 6-10 из "Сборка проекта без сборки corefx", использовав в качестве пути 
+4. Выполнить шаги 6, 8-10 из "Сборка проекта без сборки corefx", использовав в качестве пути 
 `packages_PATH` путь вида `corefx_PATH\artifacts\packages\Debug\NonShipping`, в качестве пути `runtime_PATH` путь вида `corefx_PATH\artifacts\bin\runtime\netcoreapp-Windows_NT-Debug-x64`, где `corefx_PATH` путь до локальной папки репозитория corefx.
 
 В случае внесения изменений в репозиторий corefx, перед его сборкой необходимо очистить папки 

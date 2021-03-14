@@ -1,5 +1,5 @@
 ﻿# DotnetCoreSampleProject
-Пример проекта Dotnet Core с реализацией ГОСТ криптографии.
+Пример проекта на .NET Core с реализацией ГОСТ криптографии.
 
 [Инструкция для сборки под Windows](https://github.com/CryptoProLLC/DotnetCoreSampleProject/blob/master/docs/Windows.md)
 
